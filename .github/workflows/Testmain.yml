@@ -1,0 +1,21 @@
+name: Checkmarx AST Scan
+on:
+  push:
+    branches:
+      - main
+      - master
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx AST Github Action
+        uses: actions/checkout@v2.0.18
+        with:
+          base_uri: x
+          cx_tenant: "cx_ps_tt_cristina_goncalves"
+          cx_client_id: "CX_CLIENT_ID"
+          cx_client_secret:  "wqcMeXe9gj3iDxB7hrN2oBCnb750Pny9"
+          additional_params:  --report-format sarif --output-path .
